@@ -1,8 +1,9 @@
 import Head from 'next/head';
 import Login from '../components/Login';
+import { useMoralis } from 'react-moralis';
 
 export default function Home() {
-  const isAuthenticated = false;
+  const { isAuthenticated, logout } = useMoralis();
 
   if (!isAuthenticated) return <Login />;
 
@@ -11,11 +12,10 @@ export default function Home() {
       <Head>
         <title>Dapp Chat</title>
         <link rel="icon" href="/favicon.ico" />
-
-        <h1>Welcome to the descentralized universe</h1>
       </Head>
 
-      <Login />
+      <h1>Welcome to the descentralized universe</h1>
+      <button onClick={logout}>Logout</button>
     </div>
   );
 }
